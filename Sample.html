@@ -528,7 +528,10 @@
             display.drawFrame(step);
             if (level.isFinished()) {
                 display.clear();
-                removeEventListener("keydown", handleKey)
+                removeEventListener("keydown", handleKey);
+                arrows.unregister();
+                if (andThen) andThen(level.status);
+                return false;
             }
         }
         runAnimation(animation);
